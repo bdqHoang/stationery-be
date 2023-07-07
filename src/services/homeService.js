@@ -1,21 +1,22 @@
 const iHomeService = require("./interface/iHomeService");
-const Product = require("../models/product")
-const Category = require("../models/category")
-const product = new Product();
-const category = new Category();
+const initModels = require("../models/init-models");
+const sequelize = require("../config/database");
+const models = initModels(sequelize);
 
 module.exports = class HomeService extends iHomeService {
     constructor() {
         super();
     }
 
-    getAll() {
-        return product.findAll({
+    async getAll() {
+        var data = await models.product.findAll({
             include: [{
-                model: category,
+                model: models.category,
+                as: 'category',
                 attributes: ['name'],
                 required: true
             }],
         });
+        return data;
     }
 }
