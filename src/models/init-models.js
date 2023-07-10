@@ -42,7 +42,7 @@ function initModels(sequelize) {
   address.hasMany(users, { as: "users", foreignKey: "address_id"});
   product.belongsTo(brand, { as: "brand", foreignKey: "brand_id"});
   brand.hasMany(product, { as: "products", foreignKey: "brand_id"});
-  product.hasOne(category, { as: "category", foreignKey: "category_id"});
+  product.belongsTo(category, { as: "category", foreignKey: "category_id"});
   category.hasMany(product, { as: "products", foreignKey: "category_id"});
   ward.belongsTo(district, { as: "district", foreignKey: "district_id"});
   district.hasMany(ward, { as: "wards", foreignKey: "district_id"});

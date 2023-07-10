@@ -4,8 +4,8 @@ class HomeController {
     constructor() {
     }
 
-    getAll() {
-        return homeService.getAll();
+    async getAll() {
+        return await homeService.getAll();
     }
 }
 
