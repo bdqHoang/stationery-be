@@ -7,6 +7,12 @@ class HomeController {
     async getAll() {
         return await homeService.getAll();
     }
+
+    //get featured product by id category
+    async getFeaturedProduct(id) {
+        return await homeService.getFeaturedProduct(id);
+    }
+        
 }
 
 exports = module.exports = new HomeController();

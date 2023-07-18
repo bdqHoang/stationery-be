@@ -64,6 +64,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true
+    },
+    created_day: {
+      type: DataTypes.DATEONLY,
+      allowNull: true
+    },
+    ratting: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    number_of_ratting: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,
