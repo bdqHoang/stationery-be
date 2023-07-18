@@ -5,6 +5,7 @@ var _cart = require("./cart");
 var _category = require("./category");
 var _district = require("./district");
 var _feedback = require("./feedback");
+var _image = require("./image");
 var _order = require("./order");
 var _order_detail = require("./order_detail");
 var _order_status = require("./order_status");
@@ -22,6 +23,7 @@ function initModels(sequelize) {
   var category = _category(sequelize, DataTypes);
   var district = _district(sequelize, DataTypes);
   var feedback = _feedback(sequelize, DataTypes);
+  var image = _image(sequelize, DataTypes);
   var order = _order(sequelize, DataTypes);
   var order_detail = _order_detail(sequelize, DataTypes);
   var order_status = _order_status(sequelize, DataTypes);
@@ -56,6 +58,8 @@ function initModels(sequelize) {
   product.hasMany(cart, { as: "carts", foreignKey: "product_id"});
   feedback.belongsTo(product, { as: "product", foreignKey: "product_id"});
   product.hasMany(feedback, { as: "feedbacks", foreignKey: "product_id"});
+  image.belongsTo(product, { as: "product", foreignKey: "product_id"});
+  product.hasMany(image, { as: "images", foreignKey: "product_id"});
   order_detail.belongsTo(product, { as: "product", foreignKey: "product_id"});
   product.hasMany(order_detail, { as: "order_details", foreignKey: "product_id"});
   district.belongsTo(province, { as: "province", foreignKey: "province_id"});
@@ -76,6 +80,7 @@ function initModels(sequelize) {
     category,
     district,
     feedback,
+    image,
     order,
     order_detail,
     order_status,
